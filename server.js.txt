@@ -1,0 +1,48 @@
+// server.js
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const twilio = require('twilio');
+
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
+
+// Twilio credentials (replace with your actual credentials)
+const accountSid = 'AC8e7513da02d19023595894854e48609a';
+const authToken = AC8e7513da02d19023595894854e48609a:f1552715a2b1bc66c30ab699f7ca89f2'';
+const twilioNumber ='+918920155346';
+
+// Replace with your Twilio number or WhatsApp sender
+const FROM_NUMBER = '+918920155346' for SMS
+const TO_NUMBER = 'whatsapp:+918920155346'; // change this to Sunila's number with country code
+
+app.post('/send-message', (req, res) => {
+  const { name, dob, gender, phone } = req.body;
+
+  const message = `
+🔮 New Numerology Entry:
+👤 Name: ${name}
+🎂 DOB: ${dob}
+⚧ Gender: ${gender}
+📞 Phone: ${phone}
+`;
+
+  client.messages
+    .create({
+      body: message,
+      from: FROM_NUMBER,
+      to: TO_NUMBER,
+    })
+    .then((msg) => {
+      console.log('Message sent: ', msg.sid);
+      res.status(200).json({ success: true });
+    })
+    .catch((err) => {
+      console.error('Twilio Error:', err);
+      res.status(500).json({ success: false, error: err.message });
+    });
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

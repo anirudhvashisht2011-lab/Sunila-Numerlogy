@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)file:///C:/Users/Lenovo/Documents/numerology.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>Sunila's Numerology</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      height: 100%;
+      background-image: url('https://askastrology.com/wp-content/uploads/2021/05/numerology-768x512.jpg'); /* Replace with your own numerology background */
+      background-size: cover;
+      background-position: center;
+      color: black;
+    }
+
+    .centered {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .btn {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      background-color: #007BFF;
+      color: white;
+      padding: 12px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    input, select {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      width: 300px;
+      font-size: 16px;
+      border: none;
+    }
+
+    .form-container {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 15px;
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    #waitMessage {
+      font-size: 30px;
+      font-weight: bold;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen 1: Welcome -->
+  <div id="screen1" class="centered">
+    <h1>WELCOME TO SUNILA'S NUMEROLOGY</h1>
+    <button class="btn" onclick="showScreen2()">NEXT</button>
+  </div>
+
+  <!-- Screen 2: Form -->
+  <div id="screen2" class="centered hidden">
+    <div class="form-container">
+      <h2>Please Fill Your Details</h2>
+      <input type="text" id="name" placeholder="Enter your name" required=""><br>
+      <input type="date" id="dob" required=""><br>
+      <select id="gender">
+        <option value="">Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select><br>
+      <input type="tel" id="phone" placeholder="Enter phone number" required=""><br>
+      <button class="btn" onclick="submitForm()">NEXT</button>
+    </div>
+  </div>
+
+  <!-- Screen 3: Wait -->
+  <div id="screen3" class="centered hidden">
+    <div id="waitMessage">WAIT FOR A MINUTE...</div>
+  </div>
+
+  <script>
+    function showScreen2() {
+      document.getElementById('screen1').classList.add('hidden');
+      document.getElementById('screen2').classList.remove('hidden');
+    }
+
+    function submitForm() {
+      const name = document.getElementById('name').value;
+      const dob = document.getElementById('dob').value;
+      const gender = document.getElementById('gender').value;
+      const phone = document.getElementById('phone').value;
+
+      if (!name || !dob || !gender || !phone) {
+        alert("Please fill all the fields.");
+        return;
+      }
+
+      // Simulate sending to 8920155346
+      const details = `Name: ${name}\nDOB: ${dob}\nGender: ${gender}\nPhone: ${phone}`;
+      console.log("Sending to 8920155346:\n" + details);
+
+      // Transition to WAIT screen
+      document.getElementById('screen2').classList.add('hidden');
+      document.getElementById('screen3').classList.remove('hidden');
+
+      // Simulate delay
+      setTimeout(() => {
+        alert("Message sent to 8920155346:\n" + details);
+      }, 2000);
+    }
+  </script>
+
+
+</body></html>
